@@ -1,15 +1,15 @@
-package com.blog.app.topic;
+package com.blog.app.post;
 
-public class Topic {
+public class Post {
 	private String id;
 	private String title;
 	private String description;
 	
-	public Topic() {
+	public Post() {
 	}
 
 
-	public Topic(String id, String title, String description) {
+	public Post(String id, String title, String description) {
 		super();
 		this.id = id;
 		this.title = title;

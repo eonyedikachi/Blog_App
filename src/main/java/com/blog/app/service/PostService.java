@@ -13,9 +13,9 @@ public class PostService {
 	
 	private List<Post> posts = new ArrayList<>(Arrays.asList(
 			
-			new Post("intro", "Introduction to Programming", "Short note on Programming"),
-			new Post("java", "Introduction to Java", "Short note on Java Data Types"),
-			new Post("javascript", "JavaScript Best Practice", "Best Practices for writing clean JavaScript codes")
+			new Post("intro", "Introduction to Programming", "Short note on Programming", "Content goes here"),
+			new Post("java", "Introduction to Java", "Short note on Java Data Types", "Content goes here"),
+			new Post("javascript", "JavaScript Best Practice", "Best Practices for writing clean JavaScript codes", "Content goes here")
 			));
 	
 	public List<Post> getAllPosts()

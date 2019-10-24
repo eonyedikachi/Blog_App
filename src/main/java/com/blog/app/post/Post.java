@@ -4,16 +4,19 @@ public class Post {
 	private String id;
 	private String title;
 	private String description;
-	
+	private String content;
+
+
 	public Post() {
 	}
 
 
-	public Post(String id, String title, String description) {
+	public Post(String id, String title, String description, String content) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
+		this.content = content;
 	}
 
 	public String getId() {
@@ -42,6 +45,13 @@ public class Post {
 		this.description = description;
 	}
 
-	
+	public String getContent() {
+		return content;
+	}
+
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 }

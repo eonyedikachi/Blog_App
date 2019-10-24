@@ -1,0 +1,5 @@
+com\blog\app\BlogAppApplication.class
+com\blog\app\service\TopicService.class
+com\blog\app\topic\TopicController.class
+com\blog\app\topic\Topic.class
+com\blog\app\controller\BlogController.class

@@ -1,51 +1,54 @@
 package com.blog.app.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.blog.app.post.Post;
+import com.blog.app.repo.PostRepo;
 
 @Service
 public class PostService {
 	
-	private List<Post> posts = new ArrayList<>(Arrays.asList(
-			
-			new Post("intro", "Introduction to Programming", "Short note on Programming", "Content goes here"),
-			new Post("java", "Introduction to Java", "Short note on Java Data Types", "Content goes here"),
-			new Post("javascript", "JavaScript Best Practice", "Best Practices for writing clean JavaScript codes", "Content goes here")
-			));
+	@Autowired
+	private PostRepo postRepo;
+	
+
 	
 	public List<Post> getAllPosts()
 	{
+		
+		List<Post> posts = new ArrayList<>();
+		postRepo.findAll().forEach(posts::add);
 		return posts;
 	}
 	
-	public Post getPost(String id) {
-		return posts.stream().filter(t-> t.getId().equals(id)).findFirst()
-					.get();	}
+	public void getPost(int id) {
+	
+		postRepo.getOne(id);
+	}
 
 	public void addPost(Post post) {
-		posts.add(post);
+		postRepo.save(post);
 		
 	}
 
-	public void updatePost(String id, Post post) {
-	 
-		for (int i = 0;i < posts.size(); i++) {
-			Post t = posts.get(i);
-			if (t.getId().equals(id)) {
-				posts.set(i, post);
-				return;
-			}
-		}
+	public void updatePost(int id, Post post) {
+		
+		postRepo.save(post);
 		
 	}
 
-	public void deletePost(String id) {
-		posts.removeIf(t -> t.getId().equals(id));
+	public void deletePost(int id) {
+		postRepo.deleteById(id);
 	}
+	
+	public void getPostsByUserId(int id) {
+		postRepo.getPostsByUserId(id);
+	}
+	
 }
 	

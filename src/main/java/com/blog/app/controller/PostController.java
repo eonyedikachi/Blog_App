@@ -26,9 +26,9 @@ public class PostController {
 	
 	
 	@RequestMapping("/posts/{id}")  
-	public Post getPost(@PathVariable String id) {
-		return postService.getPost(id);
-	}
+	public void getPost(@PathVariable int id) {
+			postService.getPost(id);
+		 }
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/posts")
 	//@PostMapping("/posts")
@@ -40,7 +40,7 @@ public class PostController {
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/posts/{id}")
 	//@PutMapping("/posts")
-	public void updatePost(@RequestBody Post post, @PathVariable String id) {
+	public void updatePost(@RequestBody Post post, @PathVariable int id) {
 		 
 		postService.updatePost(id, post);
 		
@@ -48,7 +48,7 @@ public class PostController {
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/posts/{id}")
 	//@PutMapping("/posts")
-	public void deletePost( @PathVariable String id) {
+	public void deletePost( @PathVariable int id) {
 		 
 		postService.deletePost(id);
 		

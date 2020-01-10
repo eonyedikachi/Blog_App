@@ -1,6 +1,7 @@
 package com.blog.app.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blog.app.user.User;
+import com.blog.app.post.Post;
 import com.blog.app.service.PostService;
 import com.blog.app.service.UserService;
 
@@ -30,8 +32,8 @@ public class UserController {
 	
 	
 	@RequestMapping("/users/{id}")  
-	public void getUser(@PathVariable int id) {
-			userService.getUser(id);
+	public Optional<User> getUser(@PathVariable Long id) {
+			return userService.getUser(id);
 		 }
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/users")
@@ -44,22 +46,22 @@ public class UserController {
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/users/{id}")
 	//@PutMapping("/users")
-	public void updateUser(@RequestBody User user, @PathVariable int id) {
+	public void updateUser(@RequestBody User user, @PathVariable Long id) {
 		 
 		userService.updateUser(id, user);
 		
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, value = "/user/{id}")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")
 	//@PutMapping("/users")
-	public void deleteUser( @PathVariable int id) {
+	public void deleteUser( @PathVariable Long id) {
 		 
 		userService.deleteUser(id);	
 	}
 	
 	@RequestMapping("/users/posts/{id}")  
-	public void getPostsByUser(@PathVariable int id) {
-			postService.getPostsByUserId(id);
+	public List<Post> getPostsByUser(@PathVariable Long id) {
+			return postService.getPostsByUser(id);
 		 }
 	
 	

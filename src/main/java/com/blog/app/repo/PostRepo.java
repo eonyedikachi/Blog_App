@@ -12,5 +12,7 @@ public interface PostRepo extends JpaRepository<Post, Integer> {
 		//getPost(String id)
 		//updatePost(Post p)
 		//deletePost(Sting id)
-	public List<Post> getPostsByUserId(int userId);
+
+	public List<Post> getPostsByUserId(Long userId);
+	
 }

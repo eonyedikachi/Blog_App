@@ -3,18 +3,26 @@ package com.blog.app.service;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.blog.app.pojo.PostPojo;
 import com.blog.app.post.Post;
 import com.blog.app.repo.PostRepo;
+import com.blog.app.repo.UserRepo;
+import com.blog.app.user.User;
 
 @Service
 public class PostService {
 	
 	@Autowired
 	private PostRepo postRepo;
+	
+	@Autowired
+	private UserRepo userRepo;
 	
 
 	
@@ -23,16 +31,36 @@ public class PostService {
 		
 		List<Post> posts = new ArrayList<>();
 		postRepo.findAll().forEach(posts::add);
+		
 		return posts;
 	}
 	
-	public void getPost(int id) {
+	public List<Post> getPostsByUser(Long id) {
 	
-		postRepo.getOne(id);
+		return postRepo.getPostsByUserId(id);
+	}
+	
+	
+	public Optional<Post> getPost(int id) {
+	
+		return postRepo.findById(id); //getOne(id);
 	}
 
-	public void addPost(Post post) {
-		postRepo.save(post);
+	public void addPost(PostPojo postpojo) {
+		User user = userRepo.findById(postpojo.getUserId()).get();
+		
+		
+		if (user==null) {
+			
+		}else {
+		
+		Post posts = new Post();
+		
+		BeanUtils.copyProperties(postpojo, posts);
+		posts.setUserId(user); //setUserId(user);
+		postRepo.save(posts);
+		}
+		
 		
 	}
 
@@ -44,10 +72,6 @@ public class PostService {
 
 	public void deletePost(int id) {
 		postRepo.deleteById(id);
-	}
-	
-	public void getPostsByUserId(int id) {
-		postRepo.getPostsByUserId(id);
 	}
 	
 }

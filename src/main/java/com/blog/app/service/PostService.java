@@ -36,8 +36,8 @@ public class PostService {
 	}
 	
 	public List<Post> getPostsByUser(Long id) {
-	
-		return postRepo.getPostsByUserId(id);
+		
+	return postRepo.getPostsByUserId(id);
 	}
 	
 	

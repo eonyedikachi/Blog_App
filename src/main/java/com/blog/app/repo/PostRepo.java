@@ -15,4 +15,5 @@ public interface PostRepo extends JpaRepository<Post, Integer> {
 
 	public List<Post> getPostsByUserId(Long userId);
 	
+	
 }

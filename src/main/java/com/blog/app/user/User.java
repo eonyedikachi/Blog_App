@@ -3,6 +3,7 @@ package com.blog.app.user;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -47,6 +48,7 @@ public class User implements Serializable {
 	private String username;
 	
 	
+	
 	public User () {
 		
 		/*
@@ -55,7 +57,7 @@ public class User implements Serializable {
 	}
 	
 
-	
+	@OneToMany(mappedBy ="user", cascade = CascadeType.ALL, targetEntity= Post.class)
 	public Long getUserId() {
 		return userId;
 	}

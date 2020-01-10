@@ -98,8 +98,8 @@ public class Post {
 		  }
 	  
 	  
-	  public void setUserId(User user) { 
-		  this.userId = user; 
+	  public void setUserId(User userId) { 
+		  this.userId = userId; 
 		  }
 	 
 
